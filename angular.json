@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "comrecmetro": {
+    "f2-admin": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/comrecmetro",
+            "allowedCommonJsDependencies": ["chart.js","raf","core-js/features/object"],
+            "outputPath": "dist/f2-admin",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "comrecmetro:build"
+            "browserTarget": "f2-admin:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "comrecmetro:build:production"
+              "browserTarget": "f2-admin:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "comrecmetro:build"
+            "browserTarget": "f2-admin:build"
           }
         },
         "test": {
@@ -117,16 +118,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "comrecmetro:serve"
+            "devServerTarget": "f2-admin:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "comrecmetro:serve:production"
+              "devServerTarget": "f2-admin:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "comrecmetro"
+  "defaultProject": "f2-admin"
 }

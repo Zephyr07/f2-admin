@@ -14,7 +14,8 @@ declare var Metro;
 @Injectable()
 export class ApiProvider {
 
-  public Bills: any = this.restangular.service('bills');
+  public Brands: any = this.restangular.service('brands');
+  public Categories: any = this.restangular.service('categories');
   public X3: any = this.restangular.service('retrieve-bills');
   public Customers: any = this.restangular.service('customers');
   public CustomerUsers: any = this.restangular.service('customer_users');
@@ -58,10 +59,10 @@ export class ApiProvider {
       this.router.navigate(['/login']);
     } else {
       // rien
-      // verification si le mot de passe a été reset
+      /*/ verification si le mot de passe a été reset
       if (!JSON.parse(localStorage.getItem('user')).has_reset_password) {
         this.router.navigate(['/reset', JSON.parse(localStorage.getItem('user')).id]);
-      }
+      }*/
     }
   }
 

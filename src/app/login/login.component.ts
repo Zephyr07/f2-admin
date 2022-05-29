@@ -10,14 +10,14 @@ declare var Metro;
 })
 export class LoginComponent implements OnInit {
 
-  username: string;
+  user_name: string;
   password: string;
   public user: {
     id: number,
     has_reset_password: boolean
   };
   constructor(private auth: AuthProvider, private route: ActivatedRoute, private router: Router) {
-    this.username = '';
+    this.user_name = '';
     this.password = '';
   }
 
@@ -25,23 +25,16 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
-    if (this.username === '' && this.password === '') {
+    if (this.user_name === '' && this.password === '') {
       Metro.notify.create('Identifiant et mot de passe absents', 'Erreur de connexion', {cls: 'alert'});
-    } else if (this.username === '' ) {
+    } else if (this.user_name === '' ) {
       Metro.notify.create('Identifiant absent', 'Erreur de connexion', {cls: 'warning'});
     } else if ( this.password === '') {
       Metro.notify.create('Mot de passe absent', 'Erreur de connexion', {cls: 'warning'});
     } else {
-      this.auth.login({username: this.username, password: this.password}).then(rep => {
-        // @ts-ignore
-        this.user = rep.user;
-        if (!this.user.has_reset_password) {
-          this.router.navigate(['/reset', this.user.id]);
-        } else {
-          // redirection vers facture
-          this.router.navigate(['/s/univers-client']);
-        }
-
+      this.auth.login({user_name: this.user_name, password: this.password}).then(rep => {
+        console.log(rep);
+        this.router.navigate(['/s/dashboard']);
 
       }).catch((err) => {
         // console(err);

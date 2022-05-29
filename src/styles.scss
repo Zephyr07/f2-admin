@@ -1,20 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~metro4/build/css/metro-all.min.css';
 
-$or : #c29d3d;
+$rouge : #D0021B;
 $gris : #ebebeb;
 $noir : #282725;
 
-.bg-or{
-  background: $or !important;
+.bg-rouge{
+  background: $rouge !important;
 }
 
-.fg-or{
-  color: $or !important;
+.fg-rouge{
+  color: $rouge !important;
 }
 
-.bd-or{
-  border-color: $or !important;
+.bd-rouge{
+  border-color: $rouge !important;
 }
 
 .bg-noir{
@@ -45,7 +45,7 @@ $noir : #282725;
 }
 
 .progress.line::before{
-  background: $or !important;
+  background: $rouge !important;
 }
 
 .hide{

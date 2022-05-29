@@ -13,6 +13,7 @@ export class SidemenuComponent implements OnInit {
   constructor(private router: Router, private api: ApiProvider, private auth: AuthProvider) {
     this.api.checkUser();
     this.user = JSON.parse(localStorage.getItem('user'));
+    console.log(this.user);
   }
 
   ngOnInit() {

@@ -5,15 +5,33 @@
         <button class="pull-button m-0 bg-noir-hover">
           <span class="mif-menu fg-white"></span>
         </button>
-        <h2 class="text-light m-0 fg-or pl-7" style="line-height: 52px; font-weight: bold">Collect BVS</h2>
+        <h2 class="text-light m-0 fg-rouge pl-7" style="line-height: 52px; font-weight: bold">f2-admin</h2>
       </div>
 
-      <ul class="navview-menu mt-4" id="side-menu" *ngxPermissionsOnly="['comrec.permission']">
+      <ul class="navview-menu mt-4" id="side-menu">
         <li class="item-header">MENU</li>
-        <li *ngxPermissionsOnly="['consult.dashboard']">
+        <li>
           <a routerLink="/s/dashboard">
             <span class="icon"><span class="mif-meter"></span></span>
             <span class="caption">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/s/categories/list">
+            <span class="icon"><span class="mif-meter"></span></span>
+            <span class="caption">Catégories</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/s/products/list">
+            <span class="icon"><span class="mif-meter"></span></span>
+            <span class="caption">Produits</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/s/brands/list">
+            <span class="icon"><span class="mif-meter"></span></span>
+            <span class="caption">Marques</span>
           </a>
         </li>
         <li *ngxPermissionsOnly="['consult.customer-universe']">
@@ -93,7 +111,7 @@
       </ul>
 
       <div class="w-100 text-center text-small data-box p-2 border-top bg-noir bd-grayMouse" style="position: absolute; bottom: 0">
-        <div><span class="fg-or">&copy; 2022 </span><a href="mailto:info@bvssas.com" class="text-muted fg-white-hover no-decor">BVS Distribution Cameroun S.A.S</a></div>
+        <div><span class="fg-rouge">&copy; 2022 </span><a href="mailto:contact@egofisance.com" class="text-muted fg-white-hover no-decor">Ego</a></div>
       </div>
     </div>
 
@@ -103,22 +121,22 @@
         <div class="app-bar-container ml-auto">
           <div class="app-bar-container">
             <a href="#" class="app-bar-item">
-              <span class="ml-2 app-bar-name">{{user.name}}</span>
+              <span class="ml-2 app-bar-name">{{user.seller.name}}</span>
             </a>
             <div class="user-block shadow-1" data-role="collapse" data-collapsed="true">
-              <div class="bg-or fg-white p-2 text-center">
-                <div class="h4 mb-0">{{user.name}}</div>
-                <div class="text-upper">{{user.username}}</div>
+              <div class="bg-rouge fg-white p-2 text-center">
+                <div class="h4 mb-0">{{user.seller.name}}</div>
+                <div class="text-upper">{{user.user_name}}</div>
               </div>
               <div class="bg-white d-flex flex-justify-between flex-equal-items p-2 bg-gris">
-                <button class="button ml-1 bg-noir fg-or" (click)="logout()">Déconnexion</button>
+                <button class="button ml-1 bg-noir fg-rouge" (click)="logout()">Déconnexion</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div id="content-wrapper" class="content-inner h-100" style="overflow-y: auto;"  *ngxPermissionsOnly="['comrec.permission']">
+      <div id="content-wrapper" class="content-inner h-100" style="overflow-y: auto;">
         <router-outlet></router-outlet>
 
       </div>
