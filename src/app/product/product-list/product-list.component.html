@@ -1,1 +1,62 @@
-<p>product-list works!</p>
+<div>
+  <div class="row border-bottom bd-lightGray m-3" style="margin-top:52px !important;">
+    <div class="cell-md-4 d-flex flex-align-center">
+      <h3 class="dashboard-section-title  text-center text-left-md w-100">Produits</h3>
+    </div>
+
+    <div class="cell-md-8 d-flex flex-justify-center flex-justify-end-md flex-align-center">
+      <ul class="breadcrumbs bg-transparent">
+        <li class="page-item"><a (click)="getProducts()" class="page-link">Actualiser <span class="icon"><span class="mif-refresh"></span></span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="m-3">
+    <div class="row">
+      <div class="cell-3">
+        <input type="text" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="Recherche">
+      </div>
+
+      <button class="button ml-auto mr-2" routerLink="/products/add">Ajouter</button>
+    </div>
+
+    <div class="row mt-2">
+      <table class="table cell-border compact table-border"
+      >
+        <thead>
+        <tr>
+          <th data-sortable="true" data-sort-dir="asc" data-name="id">#</th>
+          <th data-sortable="true" data-name="name">Nom</th>
+          <th data-sortable="true" data-name="amount">Montant</th>
+          <th data-sortable="true" data-name="vendeur">Vendeur</th>
+          <th data-sortable="true" data-name="color">Couleur</th>
+          <th data-sortable="true" data-name="categorie">Catégorie</th>
+          <th data-sortable="true" data-name="marque">Marque</th>
+          <th data-sortable="true" data-name="status">Statut</th>
+          <th data-sortable="true" data-name="created_at">Créé le</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let i of products | filter:{ id: search, name: search, vendeur: search, amount: search, color: search, categorie: search, marque: search, status: search, created_at: search, updated_at: search} : false" [ngClass]="{'dark':i.check==true}">
+          <td>{{i.id}}</td>
+          <td>{{i.name}}</td>
+          <td>{{i.amount |priceFormat}}</td>
+          <td>{{i.vendeur}}</td>
+          <td>{{i.color}}</td>
+          <td>{{i.categorie}}</td>
+          <td>{{i.marque}}</td>
+          <td>{{i.status | status}}</td>
+          <td>{{i.created_at}}</td>
+          <td>
+            <button class="button mini" routerLink="/products/edit/{{i.id}}"><span class="mif-pencil"></span></button>
+            <button class="button mini" (click)="deleteProduct(i)"><span class="mif-bin"></span></button>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

@@ -1,1 +1,63 @@
-<p>subscription-list works!</p>
+<div>
+  <div class="row border-bottom bd-lightGray m-3" style="margin-top:52px !important;">
+    <div class="cell-md-4 d-flex flex-align-center">
+      <h3 class="dashboard-section-title  text-center text-left-md w-100">Abonnements</h3>
+    </div>
+
+    <div class="cell-md-8 d-flex flex-justify-center flex-justify-end-md flex-align-center">
+      <ul class="breadcrumbs bg-transparent">
+        <li class="page-item"><a (click)="getSubscriptions()" class="page-link">Actualiser <span class="icon"><span class="mif-refresh"></span></span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="m-3">
+    <div class="row">
+      <div class="cell-3">
+        <input type="text" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="Recherche">
+      </div>
+
+      <button class="button ml-auto mr-2" routerLink="/subscriptions/add">Ajouter</button>
+    </div>
+
+    <div class="row mt-2">
+      <table class="table cell-border compact table-border"
+      >
+        <thead>
+        <tr>
+          <th data-sortable="true" data-sort-dir="asc" data-name="id">#</th>
+          <th data-sortable="true" data-name="name">Nom</th>
+          <th data-sortable="true" data-name="duration">Durée</th>
+          <th data-sortable="true" data-name="vendeur">Vendeur</th>
+          <th data-sortable="true" data-name="transaction_code">Code transaction</th>
+          <th data-sortable="true" data-name="amount">Montant</th>
+          <th data-sortable="true" data-name="advert_number">Nbre Annonce</th>
+          <th data-sortable="true" data-name="advert_duration">Durée Annonce</th>
+          <th data-sortable="true" data-name="created_at">Créé le</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let i of subscriptions | filter:{ id: search, name: search, duration: search, veudeur: search,
+         transaction_code: search, amount: search, advert_number: search, advert_duration: search, created_at: search, updated_at: search} : false">
+          <td>{{i.id}}</td>
+          <td>{{i.name}}</td>
+          <td>{{i.duration}}</td>
+          <td>{{i.vendeur}}</td>
+          <td>{{i.transaction_code}}</td>
+          <td>{{i.amount|priceFormat}}</td>
+          <td>{{i.advert_number|priceFormat}}</td>
+          <td>{{i.advert_duration}}</td>
+          <td>{{i.created_at}}</td>
+          <td>
+            <button class="button mini" routerLink="/subscriptions/edit/{{i.id}}"><span class="mif-pencil"></span></button>
+            <button class="button mini" (click)="deleteSubscription(i)"><span class="mif-bin"></span></button>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

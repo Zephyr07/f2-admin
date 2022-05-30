@@ -44,6 +44,8 @@ import { SellersComponent } from './sellers/sellers.component';
 import { SubscriptionListComponent } from './subscriptions/subscription-list/subscription-list.component';
 import { SubscriptionAddComponent } from './subscriptions/subscription-add/subscription-add.component';
 import { SuggestionsComponent } from './suggestions/suggestions.component';
+import { TownListComponent } from './towns/town-list/town-list.component';
+import { TownAddComponent } from './towns/town-add/town-add.component';
 
 export function RestangularConfigFactory(RestangularProvider) {
   RestangularProvider
@@ -123,6 +125,8 @@ export function RestangularConfigFactory(RestangularProvider) {
     SubscriptionListComponent,
     SubscriptionAddComponent,
     SuggestionsComponent,
+    TownListComponent,
+    TownAddComponent,
   ],
   imports: [
     BrowserModule,

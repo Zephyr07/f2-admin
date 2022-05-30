@@ -1,1 +1,54 @@
-<p>suggestions works!</p>
+<div>
+  <div class="row border-bottom bd-lightGray m-3" style="margin-top:52px !important;">
+    <div class="cell-md-4 d-flex flex-align-center">
+      <h3 class="dashboard-section-title  text-center text-left-md w-100">Suggestions</h3>
+    </div>
+
+    <div class="cell-md-8 d-flex flex-justify-center flex-justify-end-md flex-align-center">
+      <ul class="breadcrumbs bg-transparent">
+        <li class="page-item"><a (click)="getSuggestions()" class="page-link">Actualiser <span class="icon"><span class="mif-refresh"></span></span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="m-3">
+    <div class="row">
+      <div class="cell-3">
+        <input type="text" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="Recherche">
+      </div>
+
+    </div>
+
+    <div class="row mt-2">
+      <table class="table cell-border compact table-border"
+      >
+        <thead>
+        <tr>
+          <th data-sortable="true" data-sort-dir="asc" data-name="id">#</th>
+          <th data-sortable="true" data-name="title">Titre</th>
+          <th data-sortable="true" data-name="description">Description</th>
+          <th data-sortable="true" data-name="vendeur">Vendeur</th>
+          <th data-sortable="true" data-name="created_at">Créé le</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let i of suggestions | filter:{ id: search, title: search, description: search, vendeur: search, created_at: search, updated_at: search} : false"
+            [ngClass]="{'dark':i.check==true}">
+          <td>{{i.id}}</td>
+          <td>{{i.title}}</td>
+          <td>{{i.description}}</td>
+          <td>{{i.vendeur}}</td>
+          <td>{{i.created_at}}</td>
+          <td>
+            <button class="button mini" routerLink="/suggestions/edit/{{i.id}}"><span class="mif-pencil"></span></button>
+            <button class="button mini" (click)="deleteSuggestion(i)"><span class="mif-bin"></span></button>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

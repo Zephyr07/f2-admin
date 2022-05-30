@@ -1,1 +1,56 @@
-<p>location-list works!</p>
+<div>
+  <div class="row border-bottom bd-lightGray m-3" style="margin-top:52px !important;">
+    <div class="cell-md-4 d-flex flex-align-center">
+      <h3 class="dashboard-section-title  text-center text-left-md w-100">Marques</h3>
+    </div>
+
+    <div class="cell-md-8 d-flex flex-justify-center flex-justify-end-md flex-align-center">
+      <ul class="breadcrumbs bg-transparent">
+        <li class="page-item"><a (click)="getLocations()" class="page-link">Actualiser <span class="icon"><span class="mif-refresh"></span></span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="m-3">
+    <div class="row">
+      <div class="cell-3">
+        <input type="text" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="Recherche">
+      </div>
+
+      <button class="button ml-auto mr-2" routerLink="/locations/add">Ajouter</button>
+    </div>
+
+    <div class="row mt-2">
+      <table class="table cell-border compact table-border"
+      >
+        <thead>
+        <tr>
+          <th data-sortable="true" data-sort-dir="asc" data-name="id">#</th>
+          <th data-sortable="true" data-name="name">Nom</th>
+          <th data-sortable="true" data-name="logo">Logo</th>
+          <th data-sortable="true" data-name="created_at">Créé le</th>
+          <th data-sortable="true" data-name="updated_at">Modifié le</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let i of locations | filter:{ id: search, name: search, created_at: search, updated_at: search} : false" [ngClass]="{'dark':i.check==true}">
+          <td>{{i.id}}</td>
+          <td>{{i.name}}</td>
+          <td>
+            <img src="{{i.logo}}" style="max-height: 50px" alt="">
+          </td>
+          <td>{{i.created_at}}</td>
+          <td>{{i.updated_at}}</td>
+          <td>
+            <button class="button mini" routerLink="/locations/edit/{{i.id}}"><span class="mif-pencil"></span></button>
+            <button class="button mini" (click)="deleteLocation(i)"><span class="mif-bin"></span></button>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

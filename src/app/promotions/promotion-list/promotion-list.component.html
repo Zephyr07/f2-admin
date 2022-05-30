@@ -1,1 +1,63 @@
-<p>promotion-list works!</p>
+<div>
+  <div class="row border-bottom bd-lightGray m-3" style="margin-top:52px !important;">
+    <div class="cell-md-4 d-flex flex-align-center">
+      <h3 class="dashboard-section-title  text-center text-left-md w-100">Promotions</h3>
+    </div>
+
+    <div class="cell-md-8 d-flex flex-justify-center flex-justify-end-md flex-align-center">
+      <ul class="breadcrumbs bg-transparent">
+        <li class="page-item"><a (click)="getPromotions()" class="page-link">Actualiser <span class="icon"><span class="mif-refresh"></span></span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="m-3">
+    <div class="row">
+      <div class="cell-3">
+        <input type="text" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="Recherche">
+      </div>
+
+      <button class="button ml-auto mr-2" routerLink="/promotions/add">Ajouter</button>
+    </div>
+
+    <div class="row mt-2">
+      <table class="table cell-border compact table-border"
+      >
+        <thead>
+        <tr>
+          <th data-sortable="true" data-sort-dir="asc" data-name="id">#</th>
+          <th data-sortable="true" data-name="name">Nom</th>
+          <th data-sortable="true" data-name="priority">Priorité</th>
+          <th data-sortable="true" data-name="status">Statut</th>
+          <th data-sortable="true" data-name="produit">Produit</th>
+          <th data-sortable="true" data-name="start_at">Debut</th>
+          <th data-sortable="true" data-name="end_at">Fin</th>
+          <th data-sortable="true" data-name="created_at">Créé le</th>
+          <th data-sortable="true" data-name="updated_at">Modifié le</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let i of promotions | filter:{ id: search, name: search, priority: search, status: search,
+        produit: search, start_at: search, end_at: search, created_at: search, updated_at: search} : false">
+          <td>{{i.id}}</td>
+          <td>{{i.name}}</td>
+          <td>{{i.priority}}</td>
+          <td>{{i.status|status}}</td>
+          <td>{{i.produit}}</td>
+          <td>{{i.start_at|dateFormat}}</td>
+          <td>{{i.end_at|dateFormat}}</td>
+          <td>{{i.created_at|dateFormat}}</td>
+          <td>{{i.updated_at|dateFormat}}</td>
+          <td>
+            <button class="button mini" routerLink="/promotions/edit/{{i.id}}"><span class="mif-pencil"></span></button>
+            <button class="button mini" (click)="deletePromotion(i)"><span class="mif-bin"></span></button>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

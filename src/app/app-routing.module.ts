@@ -6,9 +6,7 @@ import {UsersComponent} from './users/users.component';
 import {RolesComponent} from './roles/roles.component';
 import {Page404Component} from './page404/page404.component';
 import {SidemenuComponent} from './sidemenu/sidemenu.component';
-import {NgxPermissionsGuard} from 'ngx-permissions';
 import {Page403Component} from './page403/page403.component';
-import {PermissionsComponent} from './permissions/permissions.component';
 import {BrandListComponent} from './brand/brand-list/brand-list.component';
 import {CategoryListComponent} from './categories/category-list/category-list.component';
 import {CountryListComponent} from './countries/country-list/country-list.component';
@@ -21,6 +19,14 @@ import {SellersComponent} from './sellers/sellers.component';
 import {SubscriptionListComponent} from './subscriptions/subscription-list/subscription-list.component';
 import {SuggestionsComponent} from './suggestions/suggestions.component';
 import {BrandAddComponent} from './brand/brand-add/brand-add.component';
+import {CategoryAddComponent} from './categories/category-add/category-add.component';
+import {LocationAddComponent} from './locations/location-add/location-add.component';
+import {RegionAddComponent} from './regions/region-add/region-add.component';
+import {SubscriptionAddComponent} from './subscriptions/subscription-add/subscription-add.component';
+import {CountryAddComponent} from './countries/country-add/country-add.component';
+import {PromotionAddComponent} from './promotions/promotion-add/promotion-add.component';
+import {TownListComponent} from './towns/town-list/town-list.component';
+import {TownAddComponent} from './towns/town-add/town-add.component';
 
 
 
@@ -58,36 +64,54 @@ const routes: Routes = [
       },
       {
         path : 'categories',
-        component : CategoryListComponent,
-        /*canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ['consult.customer-universe'],
-            redirectTo: '/403'
+        children: [
+          {
+            path : 'list',
+            component : CategoryListComponent,
+          },
+          {
+            path : 'add',
+            component : CategoryAddComponent,
+          },
+          {
+            path : 'edit/:id',
+            component : CategoryAddComponent,
           }
-        }*/
+        ]
       },
       {
         path : 'countries',
-        component : CountryListComponent,
-        /*canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ['consult.customer-universe'],
-            redirectTo: '/403'
+        children: [
+          {
+            path : 'list',
+            component : CountryListComponent,
+          },
+          {
+            path : 'add',
+            component : CountryAddComponent,
+          },
+          {
+            path : 'edit/:id',
+            component : CountryAddComponent,
           }
-        }*/
+        ]
       },
       {
         path : 'locations',
-        component : LocationListComponent,
-        /*canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ['consult.dashboard'],
-            redirectTo: '/403'
+        children: [
+          {
+            path : 'list',
+            component : LocationListComponent,
+          },
+          {
+            path : 'add',
+            component : LocationAddComponent,
+          },
+          {
+            path : 'edit/:id',
+            component : LocationAddComponent,
           }
-        }*/
+        ]
       },
       {
         path : 'payments',
@@ -103,35 +127,57 @@ const routes: Routes = [
       {
         path : 'products',
         component : ProductListComponent,
-        /*canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ['consult.dashboard'],
-            redirectTo: '/403'
-          }
-        }*/
       },
       {
         path : 'promotions',
-        component : PromotionListComponent,
-        /*canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ['consult.dashboard'],
-            redirectTo: '/403'
+        children: [
+          {
+            path : 'list',
+            component : PromotionListComponent,
+          },
+          {
+            path : 'add',
+            component : PromotionAddComponent,
+          },
+          {
+            path : 'edit/:id',
+            component : PromotionAddComponent,
           }
-        }*/
+        ]
       },
       {
         path : 'regions',
-        component : RegionListComponent,
-        /*canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ['consult.dashboard'],
-            redirectTo: '/403'
+        children: [
+          {
+            path : 'list',
+            component : RegionListComponent,
+          },
+          {
+            path : 'add',
+            component : RegionAddComponent,
+          },
+          {
+            path : 'edit/:id',
+            component : RegionAddComponent,
           }
-        }*/
+        ]
+      },
+      {
+        path : 'towns',
+        children: [
+          {
+            path : 'list',
+            component : TownListComponent,
+          },
+          {
+            path : 'add',
+            component : TownAddComponent,
+          },
+          {
+            path : 'edit/:id',
+            component : TownAddComponent,
+          }
+        ]
       },
       {
         path : 'sellers',
@@ -146,14 +192,20 @@ const routes: Routes = [
       },
       {
         path : 'subscriptions',
-        component : SubscriptionListComponent,
-        /*canActivate: [NgxPermissionsGuard],
-        data: {
-          permissions: {
-            only: ['consult.dashboard'],
-            redirectTo: '/403'
+        children: [
+          {
+            path : 'list',
+            component : SubscriptionListComponent,
+          },
+          {
+            path : 'add',
+            component : SubscriptionAddComponent,
+          },
+          {
+            path : 'edit/:id',
+            component : SubscriptionAddComponent,
           }
-        }*/
+        ]
       },
       {
         path : 'suggestions',

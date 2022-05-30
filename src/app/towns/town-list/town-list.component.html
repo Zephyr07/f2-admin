@@ -1,12 +1,12 @@
 <div>
   <div class="row border-bottom bd-lightGray m-3" style="margin-top:52px !important;">
     <div class="cell-md-4 d-flex flex-align-center">
-      <h3 class="dashboard-section-title  text-center text-left-md w-100">Pays</h3>
+      <h3 class="dashboard-section-title  text-center text-left-md w-100">Ville</h3>
     </div>
 
     <div class="cell-md-8 d-flex flex-justify-center flex-justify-end-md flex-align-center">
       <ul class="breadcrumbs bg-transparent">
-        <li class="page-item"><a (click)="getCountries()" class="page-link">Actualiser <span class="icon"><span class="mif-refresh"></span></span></a></li>
+        <li class="page-item"><a (click)="getTowns()" class="page-link">Actualiser <span class="icon"><span class="mif-refresh"></span></span></a></li>
       </ul>
     </div>
   </div>
@@ -17,7 +17,7 @@
         <input type="text" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="Recherche">
       </div>
 
-      <button class="button ml-auto mr-2" routerLink="/countries/add">Ajouter</button>
+      <button class="button ml-auto mr-2" routerLink="/towns/add">Ajouter</button>
     </div>
 
     <div class="row mt-2">
@@ -28,23 +28,23 @@
           <th data-sortable="true" data-sort-dir="asc" data-name="id">#</th>
           <th data-sortable="true" data-name="name">Nom</th>
           <th data-sortable="true" data-name="code">Code</th>
-          <th data-sortable="true" data-name="status">Statut</th>
+          <th data-sortable="true" data-name="province">Region</th>
           <th data-sortable="true" data-name="created_at">Créé le</th>
           <th data-sortable="true" data-name="updated_at">Modifié le</th>
           <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let i of countries | filter:{ id: search, name: search, code: search, status: search, created_at: search, updated_at: search} : false" [ngClass]="{'dark':i.check==true}">
+        <tr *ngFor="let i of towns | filter:{ id: search, name: search, code: search, province: search, created_at: search, updated_at: search} : false" [ngClass]="{'dark':i.check==true}">
           <td>{{i.id}}</td>
           <td>{{i.name}}</td>
           <td>{{i.code}}</td>
-          <td>{{i.status|status}}</td>
+          <td>{{i.province}}</td>
           <td>{{i.created_at}}</td>
           <td>{{i.updated_at}}</td>
           <td>
-            <button class="button mini" routerLink="/countries/edit/{{i.id}}"><span class="mif-pencil"></span></button>
-            <button class="button mini" (click)="deleteCountry(i)"><span class="mif-bin"></span></button>
+            <button class="button mini" routerLink="/towns/edit/{{i.id}}"><span class="mif-pencil"></span></button>
+            <button class="button mini" (click)="deleteTown(i)"><span class="mif-bin"></span></button>
           </td>
         </tr>
 

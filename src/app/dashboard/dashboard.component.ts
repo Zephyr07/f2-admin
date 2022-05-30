@@ -80,23 +80,7 @@ export class DashboardComponent implements OnInit {
 
   getBillsCount() {
 
-    this.api.Bills.getList({should_paginate: false, 'status-not_in': 'paid'}).subscribe(d => {
-      //console.log(d);
-      this.bill_count = d.length;
-      this.dette = _.reduce(d, (a, b) => {
-        return a + b.amount;
-      }, 0);
-      //Metro.activity.close(this.load);
-    }, q => {
-      if (q.data.error.status_code === 500) {
-        Metro.notify.create('getUsersCount ' + JSON.stringify(q.data.error.message), 'Erreur ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 500});
-      } else if (q.data.error.status_code === 401) {
-        Metro.notify.create('Votre session a expiré, veuillez vous <a routerLink="/login">reconnecter</a>  ', 'Session Expirée ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 300});
-      } else {
-        Metro.notify.create('getUsersCount ' + JSON.stringify(q.data.error.errors), 'Erreur ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 500});
-      }
-      Metro.activity.close(this.load);
-    });
+
   }
 
   getCustomersCount() {

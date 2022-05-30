@@ -1,11 +1,11 @@
 <div class="m4-cloaks h-vh-100">
   <div data-role="navview" data-toggle="#paneToggle" data-expand="xl" data-compact="lg" data-active-state="true">
     <div class="navview-pane">
-      <div class="bg-noir d-flex flex-align-center">
+      <div class="bg-rouge d-flex flex-align-center">
         <button class="pull-button m-0 bg-noir-hover">
           <span class="mif-menu fg-white"></span>
         </button>
-        <h2 class="text-light m-0 fg-rouge pl-7" style="line-height: 52px; font-weight: bold">f2-admin</h2>
+        <h2 class="text-light m-0 fg-white pl-7" style="line-height: 52px; font-weight: bold">f2-admin</h2>
       </div>
 
       <ul class="navview-menu mt-4" id="side-menu">
@@ -23,7 +23,7 @@
           </a>
         </li>
         <li>
-          <a routerLink="/s/products/list">
+          <a routerLink="/s/products">
             <span class="icon"><span class="mif-meter"></span></span>
             <span class="caption">Produits</span>
           </a>
@@ -32,6 +32,54 @@
           <a routerLink="/s/brands/list">
             <span class="icon"><span class="mif-meter"></span></span>
             <span class="caption">Marques</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/s/sellers">
+            <span class="icon"><span class="mif-meter"></span></span>
+            <span class="caption">Vendeurs</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/s/promotions/list">
+            <span class="icon"><span class="mif-meter"></span></span>
+            <span class="caption">Promotions</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/s/subscriptions/list">
+            <span class="icon"><span class="mif-meter"></span></span>
+            <span class="caption">Abonnements</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/s/payments">
+            <span class="icon"><span class="mif-meter"></span></span>
+            <span class="caption">Paiements</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/s/suggestions">
+            <span class="icon"><span class="mif-meter"></span></span>
+            <span class="caption">Suggestions</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/s/countries/list">
+            <span class="icon"><span class="mif-meter"></span></span>
+            <span class="caption">Pays</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/s/regions/list">
+            <span class="icon"><span class="mif-meter"></span></span>
+            <span class="caption">Regions</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/s/towns/list">
+            <span class="icon"><span class="mif-meter"></span></span>
+            <span class="caption">Villes</span>
           </a>
         </li>
         <li *ngxPermissionsOnly="['consult.customer-universe']">
@@ -110,13 +158,13 @@
         </div>
       </ul>
 
-      <div class="w-100 text-center text-small data-box p-2 border-top bg-noir bd-grayMouse" style="position: absolute; bottom: 0">
-        <div><span class="fg-rouge">&copy; 2022 </span><a href="mailto:contact@egofisance.com" class="text-muted fg-white-hover no-decor">Ego</a></div>
+      <div class="w-100 text-center text-small data-box p-2 border-top bg-rouge bd-grayMouse" style="position: absolute; bottom: 0">
+        <div><span class="fg-white">&copy; 2022 </span><a href="mailto:contact@egofisance.com" class="text-muted fg-white-hover no-decor">Ego</a></div>
       </div>
     </div>
 
     <div class="navview-content h-100">
-      <div data-role="appbar" class="pos-absolute bg-noir fg-white">
+      <div data-role="appbar" class="pos-absolute bg-rouge fg-white">
         <a  class="app-bar-item d-block d-none-lg" id="paneToggle"><span class="mif-menu"></span></a>
         <div class="app-bar-container ml-auto">
           <div class="app-bar-container">

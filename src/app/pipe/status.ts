@@ -15,6 +15,8 @@ export class StatutPipe implements PipeTransform{
       return 'Créance';
     } else if (value === 'pending_delivery') {
       return 'En attente de livraison';
+    } else if (value === 'pending_confirmation') {
+      return 'En attente de validation';
     } else if (value === 'delivered') {
       return 'Livré';
     } else if (value === 'collect') {
@@ -31,10 +33,14 @@ export class StatutPipe implements PipeTransform{
       return 'Validé';
     } else if (value === 'pending') {
       return 'Non validé';
-    } else if (value === 'enable') {
+    } else if (value === 'enable' || value === 'actived') {
       return 'Activé';
     } else if (value === 'disable') {
       return 'Désactivé';
+    } else if (value === 'female') {
+      return 'Femme';
+    } else if (value === 'male') {
+      return 'Homme';
     }
   }
 }

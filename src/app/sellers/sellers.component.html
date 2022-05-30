@@ -1,1 +1,64 @@
-<p>sellers works!</p>
+<div>
+  <div class="row border-bottom bd-lightGray m-3" style="margin-top:52px !important;">
+    <div class="cell-md-4 d-flex flex-align-center">
+      <h3 class="dashboard-section-title  text-center text-left-md w-100">Vendeurs</h3>
+    </div>
+
+    <div class="cell-md-8 d-flex flex-justify-center flex-justify-end-md flex-align-center">
+      <ul class="breadcrumbs bg-transparent">
+        <li class="page-item"><a (click)="getSellers()" class="page-link">Actualiser <span class="icon"><span class="mif-refresh"></span></span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="m-3">
+    <div class="row">
+      <div class="cell-3">
+        <input type="text" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="Recherche">
+      </div>
+
+    </div>
+
+    <div class="row mt-2">
+      <table class="table cell-border compact table-border"
+      >
+        <thead>
+        <tr>
+          <th data-sortable="true" data-sort-dir="asc" data-name="id">#</th>
+          <th data-sortable="true" data-name="name">Nom</th>
+          <th data-sortable="true" data-name="user_name">Identifiant</th>
+          <th data-sortable="true" data-name="gender">Sexe</th>
+          <th data-sortable="true" data-name="phone">Téléphone</th>
+          <th data-sortable="true" data-name="sponsor_code">Code sponsor</th>
+          <th data-sortable="true" data-name="can_sell">Peut vendre?</th>
+          <th data-sortable="true" data-name="status">Statut</th>
+          <th data-sortable="true" data-name="created_at">Créé le</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let i of sellers | filter:{ id: search, name: search, user_name: search, gender: search, phone: search,
+         sponsor_code: search, can_sell: search, status: search, created_at: search, updated_at: search} : false"
+            [ngClass]="{'dark':i.check==true}">
+          <td>{{i.id}}</td>
+          <td>{{i.name}}</td>
+          <td>{{i.user_name}}</td>
+          <td>{{i.gender|status}}</td>
+          <td>{{i.phone|priceFormat}}</td>
+          <td>{{i.sponsor_code}}</td>
+          <td>{{i.can_sell|status}}</td>
+          <td>{{i.status|status}}</td>
+          <td>{{i.created_at}}</td>
+          <td>
+            <button class="button mini" (click)="validateUser(i)"><span class="mif-checkmark"></span></button>
+            <button class="button mini" routerLink="/sellers/edit/{{i.id}}"><span class="mif-pencil"></span></button>
+            <button class="button mini" (click)="deleteSeller(i)"><span class="mif-bin"></span></button>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

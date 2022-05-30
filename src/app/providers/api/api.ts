@@ -16,13 +16,23 @@ export class ApiProvider {
 
   public Brands: any = this.restangular.service('brands');
   public Categories: any = this.restangular.service('categories');
+  public Countries: any = this.restangular.service('countries');
   public X3: any = this.restangular.service('retrieve-bills');
   public Customers: any = this.restangular.service('customers');
   public CustomerUsers: any = this.restangular.service('customer_users');
+  public Locations: any = this.restangular.service('locations');
+  public Payments: any = this.restangular.service('payments');
   public PermissionRoles: any = this.restangular.service('permission_roles');
   public Permissions: any = this.restangular.service('permissions');
+  public Products: any = this.restangular.service('products');
+  public Promotions: any = this.restangular.service('promotions');
   public Receipts: any = this.restangular.service('receipts');
+  public Regions: any = this.restangular.service('regions');
   public Roles: any = this.restangular.service('roles');
+  public Sellers: any = this.restangular.service('sellers');
+  public Subscriptions: any = this.restangular.service('subscriptions');
+  public Suggestions: any = this.restangular.service('suggestions');
+  public Towns: any = this.restangular.service('towns');
   public Users: any = this.restangular.service('users');
   public RoleUsers: any = this.restangular.service('role_users');
   public me: any = this.restangular.one('auth/me');

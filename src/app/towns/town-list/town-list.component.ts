@@ -3,20 +3,20 @@ import * as _ from 'lodash';
 import {ApiProvider} from '../../providers/api/api';
 declare var Metro;
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'app-town-list',
+  templateUrl: './town-list.component.html',
+  styleUrls: ['./town-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
-  products:any = [];
+export class TownListComponent implements OnInit {
+  towns:any = [];
   search = "";
   constructor(private api:ApiProvider) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getTowns();
   }
 
-  getProducts() {
+  getTowns() {
     const load = Metro.activity.open({
       type: 'metro',
       overlayColor: '#fff',
@@ -24,38 +24,30 @@ export class ProductListComponent implements OnInit {
       text: '<div class=\'mt-2 text-small\'>Chargement des données...</div>',
       overlayClickClose: true
     });
-    const opt = {
-      should_paginate: false,
-      _sort: 'name',
-      _sortDir: 'asc',
-      _includes : 'brand,category,seller'
-    };
-    this.api.Products.getList(opt).subscribe(data => {
+    this.api.Towns.getList({should_paginate: false, _sort: 'name', _sortDir: 'asc', _includes:'region'}).subscribe(data => {
       //console.log(data);
       data.forEach((v,k)=>{
-        v.categorie=v.category.name;
-        v.vendeur=v.seller.name;
-        v.marque=v.brand.name;
+        v.province=v.region.name;
       })
-      this.products = data;
+      this.towns = data;
       Metro.activity.close(load);
     }, q => {
       if (q.data.error.status_code === 500) {
-        Metro.notify.create('getProducts ' + JSON.stringify(q.data.error.message), 'Erreur ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 500});
+        Metro.notify.create('getTowns ' + JSON.stringify(q.data.error.message), 'Erreur ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 500});
       } else if (q.data.error.status_code === 401) {
         Metro.notify.create('Votre session a expiré, veuillez vous <a routerLink="/login">reconnecter</a>  ', 'Session Expirée ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 300});
       } else {
         Metro.activity.close(load);
-        Metro.notify.create('getProducts ' + JSON.stringify(q.data.error.errors), 'Erreur ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 500});
+        Metro.notify.create('getTowns ' + JSON.stringify(q.data.error.errors), 'Erreur ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 500});
       }
     });
   }
 
-  deleteProduct(i){
+  deleteTown(i){
 
   }
 
-  newProduct(){
+  newTown(){
 
   }
 
