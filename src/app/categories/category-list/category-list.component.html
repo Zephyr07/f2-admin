@@ -17,7 +17,7 @@
         <input type="text" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="Recherche">
       </div>
 
-      <button class="button ml-auto mr-2" routerLink="/categories/add">Ajouter</button>
+      <button class="button ml-auto mr-2" routerLink="/s/categories/add">Ajouter</button>
     </div>
 
     <div class="row mt-2">
@@ -27,6 +27,7 @@
         <tr>
           <th data-sortable="true" data-sort-dir="asc" data-name="id">#</th>
           <th data-sortable="true" data-name="name">Nom</th>
+          <th data-sortable="true" data-name="image">Image</th>
           <th data-sortable="true" data-name="parent_id">Parent</th>
           <th data-sortable="true" data-name="created_at">Créé le</th>
           <th data-sortable="true" data-name="updated_at">Modifié le</th>
@@ -37,11 +38,14 @@
         <tr *ngFor="let i of categories | filter:{ id: search, name: search, parent_id: search, created_at: search, updated_at: search} : false" [ngClass]="{'dark':i.check==true}">
           <td>{{i.id}}</td>
           <td>{{i.name}}</td>
+          <td>
+            <img src="{{i.image}}" style="max-height: 50px" alt="">
+          </td>
           <td>{{i.parent_id}}</td>
           <td>{{i.created_at}}</td>
           <td>{{i.updated_at}}</td>
           <td>
-            <button class="button mini" routerLink="/categories/edit/{{i.id}}"><span class="mif-pencil"></span></button>
+            <button class="button mini" routerLink="/s/categories/edit/{{i.id}}"><span class="mif-pencil"></span></button>
             <button class="button mini" (click)="deleteCategory(i)"><span class="mif-bin"></span></button>
           </td>
         </tr>
