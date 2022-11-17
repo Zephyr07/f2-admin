@@ -26,7 +26,7 @@ export class AuthProvider {
     return localStorage.getItem(this.token_key) != undefined;
   }
 
-  login(credentials: {user_name: string, password: string}) {
+  login(credentials: {email: string, password: string}) {
     this.permissionsService.flushPermissions();
     return new Promise((resolve, reject) => {
       this.api.restangular.all('auth/signin').post(credentials)

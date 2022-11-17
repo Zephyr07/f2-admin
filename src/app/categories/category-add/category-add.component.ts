@@ -26,7 +26,7 @@ export class CategoryAddComponent implements OnInit {
     private r : ActivatedRoute
   ) {
     this.id=parseInt(this.r.snapshot.paramMap.get('id'));
-    if(this.id!=undefined && this.id!=null && this.id!=0){
+    if(this.id!=undefined && this.id!=null && this.id!=0 && !isNaN(this.id)){
       this.action = "Modifier";
     } else {
       this.action = "Nouvelle";
@@ -75,14 +75,16 @@ export class CategoryAddComponent implements OnInit {
 
   save(){
     if(this.checkForm()){
-      if(this.id!=undefined && this.id!=null && this.id!=0){
+      if(this.id!=undefined && this.id!=null && this.id!=0 && !isNaN(this.id)){
         // modification catégorie
         this.category.name = this.name;
-        this.category.parent_id=this.parent_id;
-        if(!this.file_selected){
-          // retrait de l'image dans le put
-          delete this.category.image;
+        if(this.parent_id!=undefined && this.parent_id!=null){
+          this.category.parent_id=this.parent_id;
+        } else {
+          delete this.category.parent_id
         }
+        delete this.category.image;
+        console.log(this.category);
         this.category.put().subscribe((data)=>{
           this.saveImage(data,'modifiée');
         })

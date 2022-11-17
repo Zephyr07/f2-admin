@@ -25,6 +25,8 @@
         <thead>
         <tr>
           <th data-sortable="true" data-sort-dir="asc" data-name="id">#</th>
+          <th data-sortable="true" data-name="utilisateur">Utilisateur</th>
+          <th data-sortable="true" data-name="abonnement">Abonnement</th>
           <th data-sortable="true" data-name="amount">Montant</th>
           <th data-sortable="true" data-name="transaction_code">Code transaction</th>
           <th data-sortable="true" data-name="payment_method">Mode de paiement</th>
@@ -35,10 +37,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let i of payments | filter:{ id: search, amount: search, transaction_code: search, payment_method: search, type: search,
+        <tr *ngFor="let i of payments | filter:{ id: search, amount: search, utilisateur: search, abonnement: search, transaction_code: search, payment_method: search, type: search,
          status: search, created_at: search, updated_at: search} : false"
             [ngClass]="{'dark':i.check==true}">
           <td>{{i.id}}</td>
+          <td>{{i.utilisateur}}</td>
+          <td>{{i.abonnement}}</td>
           <td>{{i.amount|priceFormat}}</td>
           <td>{{i.transaction_code}}</td>
           <td>{{i.payment_method}}</td>

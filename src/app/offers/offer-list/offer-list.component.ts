@@ -3,14 +3,14 @@ import * as _ from 'lodash';
 import {ApiProvider} from '../../providers/api/api';
 declare var Metro;
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'app-offer-list',
+  templateUrl: './offer-list.component.html',
+  styleUrls: ['./offer-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
-  products:any = [];
+export class OfferListComponent implements OnInit {
+  offers:any = [];
   search = "";
-  product:any = {
+  offer:any = {
     location:{
       town:{}
     },
@@ -29,10 +29,10 @@ export class ProductListComponent implements OnInit {
   constructor(private api:ApiProvider) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getOffers();
   }
 
-  getProducts() {
+  getOffers() {
     console.log(this.page);
     if(!this.isLoading && this.page<=this.last_page){
       this.isLoading = true;
@@ -51,7 +51,7 @@ export class ProductListComponent implements OnInit {
         per_page: this.per_page,
         page: this.page
       };
-      this.api.Products.getList(opt).subscribe(data => {
+      this.api.Offers.getList(opt).subscribe(data => {
         this.last_page = data.metadata.last_page;
         this.max_length = data.metadata.total;
         this.old_max_length = this.max_length;
@@ -59,36 +59,36 @@ export class ProductListComponent implements OnInit {
           v.categorie=v.category.name;
           v.vendeur=v.seller.name;
           v.marque=v.brand.name;
-          this.products.push(v);
+          this.offers.push(v);
         });
-        //this.products = data;
+        //this.offers = data;
         Metro.activity.close(load);
         this.page++;
         this.isLoading = false;
       }, q => {
         if (q.data.error.status_code === 500) {
-          Metro.notify.create('getProducts ' + JSON.stringify(q.data.error.message), 'Erreur ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 500});
+          Metro.notify.create('getOffers ' + JSON.stringify(q.data.error.message), 'Erreur ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 500});
         } else if (q.data.error.status_code === 401) {
           Metro.notify.create('Votre session a expiré, veuillez vous <a routerLink="/login">reconnecter</a>  ', 'Session Expirée ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 300});
         } else {
           Metro.activity.close(load);
-          Metro.notify.create('getProducts ' + JSON.stringify(q.data.error.errors), 'Erreur ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 500});
+          Metro.notify.create('getOffers ' + JSON.stringify(q.data.error.errors), 'Erreur ' + q.data.error.status_code, {cls: 'alert', keepOpen: true, width: 500});
         }
       });
     }
   }
 
-  deleteProduct(i){
-    this.api.deleteItem(i,'Produit',false,this.getProducts());
+  deleteOffer(i){
+    this.api.deleteItem(i,'Produit',false,this.getOffers());
   }
 
   showDetail(i){
-    this.product=i;
+    this.offer=i;
     Metro.dialog.open('#dialog');
   }
 
-  validateProduct(i,status){
-    this.api.Products.get(i.id).subscribe(d=>{
+  validateOffer(i,status){
+    this.api.Offers.get(i.id).subscribe(d=>{
       d.id=i.id;
       d.status=status;
       d.put().subscribe(a=>{
@@ -102,7 +102,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onScrollDown(ev) {
-    this.getProducts();
+    this.getOffers();
     console.log("aze");
   }
 

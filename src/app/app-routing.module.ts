@@ -10,7 +10,6 @@ import {Page403Component} from './page403/page403.component';
 import {BrandListComponent} from './brand/brand-list/brand-list.component';
 import {CategoryListComponent} from './categories/category-list/category-list.component';
 import {CountryListComponent} from './countries/country-list/country-list.component';
-import {LocationListComponent} from './locations/location-list/location-list.component';
 import {PaymentComponent} from './payment/payment.component';
 import {ProductListComponent} from './product/product-list/product-list.component';
 import {PromotionListComponent} from './promotions/promotion-list/promotion-list.component';
@@ -20,13 +19,13 @@ import {SubscriptionListComponent} from './subscriptions/subscription-list/subsc
 import {SuggestionsComponent} from './suggestions/suggestions.component';
 import {BrandAddComponent} from './brand/brand-add/brand-add.component';
 import {CategoryAddComponent} from './categories/category-add/category-add.component';
-import {LocationAddComponent} from './locations/location-add/location-add.component';
 import {RegionAddComponent} from './regions/region-add/region-add.component';
 import {SubscriptionAddComponent} from './subscriptions/subscription-add/subscription-add.component';
 import {CountryAddComponent} from './countries/country-add/country-add.component';
 import {PromotionAddComponent} from './promotions/promotion-add/promotion-add.component';
 import {TownListComponent} from './towns/town-list/town-list.component';
 import {TownAddComponent} from './towns/town-add/town-add.component';
+import {OfferListComponent} from './offers/offer-list/offer-list.component';
 
 
 
@@ -97,23 +96,6 @@ const routes: Routes = [
         ]
       },
       {
-        path : 'locations',
-        children: [
-          {
-            path : 'list',
-            component : LocationListComponent,
-          },
-          {
-            path : 'add',
-            component : LocationAddComponent,
-          },
-          {
-            path : 'edit/:id',
-            component : LocationAddComponent,
-          }
-        ]
-      },
-      {
         path : 'payments',
         component : PaymentComponent,
         /*canActivate: [NgxPermissionsGuard],
@@ -127,6 +109,15 @@ const routes: Routes = [
       {
         path : 'products',
         component : ProductListComponent,
+      },
+      {
+        path : 'offers',
+        children: [
+          {
+            path : 'list',
+            component : OfferListComponent,
+          }
+        ]
       },
       {
         path : 'promotions',

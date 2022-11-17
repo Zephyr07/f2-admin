@@ -28,15 +28,9 @@ export class SubscriptionListComponent implements OnInit {
       should_paginate: false,
       _sort: 'name',
       _sortDir: 'asc',
-      _includes:'user.seller,payment'
     };
     this.api.Subscriptions.getList(opt).subscribe(data => {
       //console.log(data);
-      data.forEach(v=>{
-        v.vendeur = v.user.seller.name;
-        console.log(v.vendeur);
-        v.transaction_code = v.payment.transaction_code
-      });
       this.subscriptions = data;
       Metro.activity.close(load);
     }, q => {

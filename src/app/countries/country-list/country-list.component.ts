@@ -41,11 +41,7 @@ export class CountryListComponent implements OnInit {
   }
 
   deleteCountry(i){
-
-  }
-
-  newCountry(){
-
+    this.api.deleteItem(i,'Pays',false,this.getCountries());
   }
 
 }

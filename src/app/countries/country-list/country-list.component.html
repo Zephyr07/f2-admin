@@ -17,7 +17,7 @@
         <input type="text" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" placeholder="Recherche">
       </div>
 
-      <button class="button ml-auto mr-2" routerLink="/countries/add">Ajouter</button>
+      <button class="button ml-auto mr-2" routerLink="/s/countries/add">Ajouter</button>
     </div>
 
     <div class="row mt-2">
@@ -43,7 +43,7 @@
           <td>{{i.created_at}}</td>
           <td>{{i.updated_at}}</td>
           <td>
-            <button class="button mini" routerLink="/countries/edit/{{i.id}}"><span class="mif-pencil"></span></button>
+            <button class="button mini" routerLink="/s/countries/edit/{{i.id}}"><span class="mif-pencil"></span></button>
             <button class="button mini" (click)="deleteCountry(i)"><span class="mif-bin"></span></button>
           </td>
         </tr>

@@ -6,7 +6,7 @@
 
     <div class="cell-md-8 d-flex flex-justify-center flex-justify-end-md flex-align-center">
       <ul class="breadcrumbs bg-transparent">
-        <li class="page-item"><a (click)="getProducts()" class="page-link">Actualiser <span class="icon"><span class="mif-refresh"></span></span></a></li>
+        <li class="page-item"><a (click)="getOffers()" class="page-link">Actualiser <span class="icon"><span class="mif-refresh"></span></span></a></li>
       </ul>
     </div>
   </div>
@@ -44,7 +44,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let i of products;trackBy:trackByIndex |filter:{ id: search, name: search, vendeur: search, amount: search, color: search, categorie: search, marque: search, status: search, created_at: search, updated_at: search} : false"
+        <tr *ngFor="let i of offers;trackBy:trackByIndex |filter:{ id: search, name: search, vendeur: search, amount: search, color: search, categorie: search, marque: search, status: search, created_at: search, updated_at: search} : false"
             [ngClass]="{'bg-rouge fg-white':i.status!='enable'}">
           <td>{{i.id}}</td>
           <td>{{i.name}}</td>
@@ -57,8 +57,8 @@
           <td>{{i.created_at}}</td>
           <td>
             <button class="button mini" (click)="showDetail(i)"><span class="mif-eye"></span></button>
-            <button *ngIf="i.status!='enable'" class="button mini" (click)="validateProduct(i, 'enable')" m4-hint="Valider le produit"><span class="mif-checkmark"></span></button>
-            <button *ngIf="i.status=='enable'" class="button mini" (click)="validateProduct(i, 'rejected')" m4-hint="Rejeter le produit"><span class="mif-cross"></span></button>
+            <button *ngIf="i.status!='enable'" class="button mini" (click)="validateOffer(i, 'enable')" m4-hint="Valider le produit"><span class="mif-checkmark"></span></button>
+            <button *ngIf="i.status=='enable'" class="button mini" (click)="validateOffer(i, 'rejected')" m4-hint="Rejeter le produit"><span class="mif-cross"></span></button>
           </td>
         </tr>
 
@@ -74,20 +74,20 @@
   <div class="dialog-content">
     <div class="row">
       <div class="cell-6">
-        <div><strong>Nom :</strong> {{product.name}} </div>
-        <div><strong>Montant :</strong> {{product.amount| priceFormat}} FCFA  </div>
-        <div><strong>Vendeur :</strong> {{product.vendeur}}</div>
-        <div><strong>Couleur :</strong> {{product.color}} </div>
-        <div><strong>Description :</strong> {{product.description}} </div>
-        <div><strong>Catégorie :</strong> {{product.categorie}} </div>
-        <div><strong>Marque :</strong> {{product.marque}} </div>
-        <div><strong>Localisation :</strong> {{product.location.district}} - {{product.location.town.name}} </div>
-        <div><strong>Statut :</strong> {{product.status|status}} </div>
+        <div><strong>Nom :</strong> {{offer.name}} </div>
+        <div><strong>Montant :</strong> {{offer.amount| priceFormat}} FCFA  </div>
+        <div><strong>Vendeur :</strong> {{offer.vendeur}}</div>
+        <div><strong>Couleur :</strong> {{offer.color}} </div>
+        <div><strong>Description :</strong> {{offer.description}} </div>
+        <div><strong>Catégorie :</strong> {{offer.categorie}} </div>
+        <div><strong>Marque :</strong> {{offer.marque}} </div>
+        <div><strong>Localisation :</strong> {{offer.location.district}} - {{offer.location.town.name}} </div>
+        <div><strong>Statut :</strong> {{offer.status|status}} </div>
       </div>
 
       <div class="cell-6">
         <strong>Image(s)</strong>
-        <div class="cell-6" *ngFor="let i of product.images">
+        <div class="cell-6" *ngFor="let i of offer.images">
           <img src="{{i.url}}" alt="" style="width: 100%">
         </div>
       </div>

@@ -28,8 +28,7 @@
           <th data-sortable="true" data-sort-dir="asc" data-name="id">#</th>
           <th data-sortable="true" data-name="name">Nom</th>
           <th data-sortable="true" data-name="duration">Durée</th>
-          <th data-sortable="true" data-name="vendeur">Vendeur</th>
-          <th data-sortable="true" data-name="transaction_code">Code transaction</th>
+          <th data-sortable="true" data-name="status">Statut</th>
           <th data-sortable="true" data-name="amount">Montant</th>
           <th data-sortable="true" data-name="advert_number">Nbre Annonce</th>
           <th data-sortable="true" data-name="advert_duration">Durée Annonce</th>
@@ -38,13 +37,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let i of subscriptions | filter:{ id: search, name: search, duration: search, veudeur: search,
-         transaction_code: search, amount: search, advert_number: search, advert_duration: search, created_at: search, updated_at: search} : false">
+        <tr *ngFor="let i of subscriptions | filter:{ id: search, name: search, duration: search,
+         amount: search, advert_number: search, advert_duration: search, created_at: search, updated_at: search} : false">
           <td>{{i.id}}</td>
           <td>{{i.name}}</td>
           <td>{{i.duration}}</td>
-          <td>{{i.vendeur}}</td>
-          <td>{{i.transaction_code}}</td>
+          <td>{{i.status|status}}</td>
           <td>{{i.amount|priceFormat}}</td>
           <td>{{i.advert_number|priceFormat}}</td>
           <td>{{i.advert_duration}}</td>

@@ -33,8 +33,6 @@ import { BrandAddComponent } from './brand/brand-add/brand-add.component';
 import { BrandListComponent } from './brand/brand-list/brand-list.component';
 import { CountryListComponent } from './countries/country-list/country-list.component';
 import { CountryAddComponent } from './countries/country-add/country-add.component';
-import { LocationAddComponent } from './locations/location-add/location-add.component';
-import { LocationListComponent } from './locations/location-list/location-list.component';
 import { PaymentComponent } from './payment/payment.component';
 import { PromotionListComponent } from './promotions/promotion-list/promotion-list.component';
 import { PromotionAddComponent } from './promotions/promotion-add/promotion-add.component';
@@ -46,6 +44,9 @@ import { SubscriptionAddComponent } from './subscriptions/subscription-add/subsc
 import { SuggestionsComponent } from './suggestions/suggestions.component';
 import { TownListComponent } from './towns/town-list/town-list.component';
 import { TownAddComponent } from './towns/town-add/town-add.component';
+import { CompanyListComponent } from './companies/company-list/company-list.component';
+import { CompanyAddComponent } from './companies/company-add/company-add.component';
+import { OfferListComponent } from './offers/offer-list/offer-list.component';
 
 export function RestangularConfigFactory(RestangularProvider) {
   RestangularProvider
@@ -114,8 +115,6 @@ export function RestangularConfigFactory(RestangularProvider) {
     BrandListComponent,
     CountryListComponent,
     CountryAddComponent,
-    LocationAddComponent,
-    LocationListComponent,
     PaymentComponent,
     PromotionListComponent,
     PromotionAddComponent,
@@ -127,6 +126,9 @@ export function RestangularConfigFactory(RestangularProvider) {
     SuggestionsComponent,
     TownListComponent,
     TownAddComponent,
+    CompanyListComponent,
+    CompanyAddComponent,
+    OfferListComponent,
   ],
   imports: [
     BrowserModule,

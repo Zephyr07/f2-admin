@@ -29,9 +29,14 @@ export class PaymentComponent implements OnInit {
       should_paginate: false,
       _sort: 'name',
       _sortDir: 'asc',
+      _includes:'user.person,subscription'
     };
     this.api.Payments.getList(opt).subscribe(data => {
       //console.log(data);
+      data.forEach(v=>{
+        v.utilisateur=v.user.name;
+        v.abonnment=v.subscription.name;
+      });
       this.payments = data;
       Metro.activity.close(load);
     }, q => {

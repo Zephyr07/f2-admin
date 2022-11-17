@@ -1,1 +1,44 @@
-<p>brand-add works!</p>
+<div>
+  <div class="row border-bottom bd-lightGray m-3" style="margin-top:52px !important;">
+    <div class="cell-md-4 d-flex flex-align-center">
+      <h3 class="dashboard-section-title  text-center text-left-md w-100">{{action}} marque</h3>
+    </div>
+  </div>
+
+  <div class="m-3">
+    <div class="row mt-2">
+      <div class="cell-6">
+        <form class="bg-white"
+              action="javascript:"
+              data-role="validator"
+              data-clear-invalid="2000"
+        ><!--data-on-error-form="invalidForm"-->
+          <div class="form-group">
+            <input type="text" [(ngModel)]="name" name="name" required placeholder="Nom">
+            <span class="invalid_feedback">Nom absent</span>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="cell-8">
+                <input type="file" id="image"
+                       (change)="onSelectFile($event)"
+                       accept="image/*"
+                       required>
+                <span class="invalid_feedback">Image absent</span>
+              </div>
+              <div class="cell-4">
+                <img [src]="imageSrc" *ngIf="imageSrc" style="width:100%">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group d-flex flex-align-center flex-justify-between">
+            <button class="button bg-rouge fg-white" (click)="save()">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

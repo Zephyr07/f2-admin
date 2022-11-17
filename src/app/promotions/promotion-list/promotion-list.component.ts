@@ -24,10 +24,16 @@ export class PromotionListComponent implements OnInit {
       text: '<div class=\'mt-2 text-small\'>Chargement des données...</div>',
       overlayClickClose: true
     });
-    this.api.Promotions.getList({should_paginate: false, _sort: 'name', _sortDir: 'asc', _includes:'product'}).subscribe(data => {
+    const opt = {
+      should_paginate: false,
+      _sort: 'name',
+      _sortDir: 'asc',
+      _includes:'price.offer'
+    };
+    this.api.Promotions.getList(opt).subscribe(data => {
       //console.log(data);
       data.forEach(v=>{
-        v.produit=v.product.name;
+        v.offre=v.price.offer.name;
       });
       this.promotions = data;
       Metro.activity.close(load);
